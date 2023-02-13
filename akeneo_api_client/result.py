@@ -12,6 +12,7 @@ class Result(object):
     The next page will be loaded once the user
     iterated over the whole current page. The content of the new page will replace
     the content of the previous page."""
+
     def __init__(self, session, count, current_items, link_first, link_next, link_self):
         self._items = current_items
         self._link_next = link_next
@@ -46,7 +47,13 @@ class Result(object):
         if self._link_next:
             r = self._session.get(self._link_next)
             if r.status_code == 200:
-                (self._link_first, self._link_self, self._link_next, self._items, self._count) = Result.parse_page(json.loads(r.text))
+                (
+                    self._link_first,
+                    self._link_self,
+                    self._link_next,
+                    self._items,
+                    self._count,
+                ) = Result.parse_page(json.loads(r.text))
                 self._page_iterator = iter(self._items)
                 self._reached_the_end = False
             else:
@@ -71,9 +78,9 @@ class Result(object):
     def parse_page(json_data):
         """Returns (next link, retrieved items, count of items)"""
         final_next_link = None
-        next_link = json_data["_links"].get('next')
+        next_link = json_data["_links"].get("next")
         if next_link:
-            final_next_link = next_link['href']
+            final_next_link = next_link["href"]
         return (
             json_data["_links"]["first"]["href"],
             json_data["_links"]["self"]["href"],
