@@ -101,8 +101,9 @@ class Auth(AuthBase):
         return self._request_a_token(grant_type="refresh_token")
 
     def __call__(self, r):
-        if not self._token:
+        if not self._token or not self._refresh_token:
             self._request_a_token()
+
         if self._should_refresh_token():
             self._refresh_the_token()
 
