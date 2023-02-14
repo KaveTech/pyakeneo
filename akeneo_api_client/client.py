@@ -22,11 +22,18 @@ from akeneo_api_client.utils import urljoin
 
 
 class Client:
-    BASIC_API_PATH = '/api/rest/v1/'
+    BASIC_API_PATH = "/api/rest/v1/"
 
-    def __init__(self,
-                 base_url, client_id=None, secret=None, username=None, password=None,
-                 session=None, auth=None):
+    def __init__(
+        self,
+        base_url,
+        client_id=None,
+        secret=None,
+        username=None,
+        password=None,
+        session=None,
+        auth=None,
+    ):
         """Expect credential
         1) as auth, or
         2) as client_id+secret+username+password, or
@@ -36,16 +43,17 @@ class Client:
             if client_id or secret or username or password:
                 if client_id and secret and username and password:
                     provided_auth = True
-                    auth = Auth(base_url, client_id, secret,
-                                username, password)
+                    auth = Auth(base_url, client_id, secret, username, password)
             elif session:
                 provided_auth = True
         else:
             provided_auth = True
         if not provided_auth:
-            raise ValueError("Expect credential 1) as auth, or "
-                           + "2) as client_id+secret+username+password, or "
-                           + "3) as session having an authentication.")
+            raise ValueError(
+                "Expect credential 1) as auth, or "
+                + "2) as client_id+secret+username+password, or "
+                + "3) as session having an authentication."
+            )
         if not session:
             session = requests.Session()
         self._init(base_url, session, auth)
@@ -55,7 +63,7 @@ class Client:
         self._session = session
         if auth:
             self._session.auth = auth
-        self._session.headers.update({'Content-Type': 'application/json'})
+        self._session.headers.update({"Content-Type": "application/json"})
         self._resources = {
             'association_types': AssociationTypesPool(
                 urljoin(self._base_url, self.BASIC_API_PATH, 'association-types/'), session),
