@@ -1,18 +1,12 @@
-# -*- coding: utf-8 -*-
-
 from akeneo_api_client.auth import Auth
 
 import requests
-from requests.auth import AuthBase
 from akeneo_api_client.utils import urljoin
-import unittest
-import base64
 import json
 from time import time
 
 import logging
 import logzero
-from logzero import logger
 
 from vcr_unittest import VCRTestCase
 
@@ -55,8 +49,6 @@ class TestAuthIntegrationMock(VCRTestCase):
         auth = Auth(self.base_url,
             self.client_id, self.secret, self.username, self.password)
         auth._request_a_token()
-        logger.debug(int(time()))
-        logger.debug(auth._expiry_date)
         self.assertFalse(auth._should_refresh_token())
         auth._expiry_date = time() - 100
         self.assertTrue(auth._should_refresh_token())
@@ -65,8 +57,5 @@ class TestAuthIntegrationMock(VCRTestCase):
         auth = Auth(self.base_url,
             self.client_id, self.secret, self.username, self.password)
         r = requests.get(urljoin(self.base_url, "/api/rest/v1/products"), auth=auth)
-        logger.debug(r)
-        logger.debug(r.status_code)
         json_data = json.loads(r.text)
-        logger.debug(json.dumps(json_data, indent=4, sort_keys=True))
 

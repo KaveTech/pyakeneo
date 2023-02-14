@@ -1,18 +1,8 @@
-# -*- coding: utf-8 -*-
-
-from akeneo_api_client.result import *
 from akeneo_api_client.resources import *
-from akeneo_api_client.auth import Auth
-from akeneo_api_client.utils import urljoin
 from akeneo_api_client.client import *
 import sys
 
 import requests
-from requests.auth import AuthBase
-import unittest
-import base64
-import json
-from time import time
 
 import logging
 import logzero
@@ -20,7 +10,6 @@ from logzero import logger
 
 from vcr_unittest import VCRTestCase
 
-import copy
 
 class TestClient(VCRTestCase):
     client_id = '1_ovvscbaj0pwwg8sookkgkc8ck4kog8gscg8g44sc88c8w48ww'
@@ -75,11 +64,9 @@ class TestClient(VCRTestCase):
 
         statuses = akeneo.products.update_create_list(items)
 
-        logger.debug(statuses)
         for status in statuses:
             self.assertIn(status['status_code'], [201, 204])
 
-        logger.debug('Cleaning up products...')
         # TODO: replace this really long cleaning up
         # by targeting a new clean database container / PIM instance / whatever
         for item in items:
@@ -189,7 +176,6 @@ class TestClient(VCRTestCase):
             item = next(iterator)
         self.assertEquals(len(items.get_page_items()), 15)
 
-
     def test_family_variants(self):
         akeneo = Client(self.base_url,
             self.client_id, self.secret, self.username, self.password)
@@ -210,7 +196,6 @@ class TestClient(VCRTestCase):
         for attribute in attributes:
             attribute_code = akeneo.attributes.get_code(attribute)
             options_pool = akeneo.attributes.options(attribute_code)
-            logger.debug(options_pool._endpoint)
             if attribute_code in ['auto_exposure', 'auto_focus_assist_beam',
                 'auto_focus_lock', 'auto_focus_modes', 'auto_focus_points',
                 'camera_model_name', 'care_instructions']:

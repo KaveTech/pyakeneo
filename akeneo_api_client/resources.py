@@ -12,7 +12,6 @@ from akeneo_api_client.utils import urljoin
 class CreatableResource(interfaces.CreatableResourceInterface):
     def create_item(self, item):
         url = self._endpoint
-        logger.debug(json.dumps(item, separators=(",", ":")))
         r = self._session.post(url, data=json.dumps(item, separators=(",", ":")))
 
         if r.status_code != 201:
@@ -58,16 +57,14 @@ class SearchAfterListableResource(ListableResource):
 
 class GettableResource(interfaces.GettableResourceInterface):
     def fetch_item(self, code_or_item):
-        """Returns a unique item object. code_or_item should be a the code
+        """Returns a unique item object. code_or_item should be the code
         of the desired item, or an item with the proper code."""
         code = code_or_item
         if not isinstance(code_or_item, str):
             # if code_or_item is item, then fetch the code
             code = self.get_code(code_or_item)
 
-        logger.debug(self._endpoint)
         url = urljoin(self._endpoint, code)
-        logger.debug(url)
         r = self._session.get(url)
 
         if r.status_code != 200:
@@ -75,14 +72,12 @@ class GettableResource(interfaces.GettableResourceInterface):
                 "The item {0} doesn't exit: {1}".format(code, r.status_code)
             )
 
-        logger.debug(r.status_code)
-        logger.debug(r.text)
         return json.loads(r.text)  # returns item as a dict
 
 
 class DeletableResource(interfaces.DeletableResourceInterface):
     def delete_item(self, code_or_item):
-        """code_or_item should be a the code
+        """code_or_item should be the code
         of the desired item, or an item with the proper code."""
         code = code_or_item
         if not isinstance(code_or_item, str):
@@ -103,7 +98,6 @@ class UpdatableResource(interfaces.UpdatableResourceInterface):
             code = self.get_code(item_values)
 
         url = urljoin(self._endpoint, code)
-        logger.debug(json.dumps(item_values, separators=(",", ":")))
         r = self._session.patch(
             url, data=json.dumps(item_values, separators=(",", ":"))
         )

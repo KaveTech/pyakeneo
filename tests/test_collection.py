@@ -1,16 +1,9 @@
-# -*- coding: utf-8 -*-
-
-from akeneo_api_client.result import *
 from akeneo_api_client.resources import *
 from akeneo_api_client.auth import Auth
 from akeneo_api_client.utils import urljoin
 
 import requests
-from requests.auth import AuthBase
-import unittest
-import base64
 import json
-from time import time
 
 import logging
 import logzero
@@ -144,7 +137,6 @@ class TestCollectionMock(VCRTestCase):
         session.headers.update({'Content-Type': 'application/json'})
         pool = BasicResourcePool(urljoin(self.base_url, '/api/rest/v1/', 'products/'), session)
         item = pool.fetch_item('1111111137')
-        logger.debug(item)
         self.assertEqual(item['identifier'], '1111111137')
         self.assertEqual(len(item['categories']), 3)
 

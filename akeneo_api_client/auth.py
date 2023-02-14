@@ -54,7 +54,7 @@ class Auth(AuthBase):
                 "grant_type parameter is expected to be either "
                 + '"password" or "refresh_token". {0} provided'.format(grant_type)
             )
-        logger.debug(data)
+
         url = urljoin(self._base_url, self.TOKEN_PATH)
         r = requests.post(url, data=data, headers=headers)
         if r.status_code != 200:
@@ -66,9 +66,7 @@ class Auth(AuthBase):
             raise SyntaxError(
                 "The server did not return expected json: {0}".format(r.text)
             )
-        logger.debug(r.status_code)
-        logger.debug(r.encoding)
-        logger.debug(json.dumps(json_data, indent=4, sort_keys=True))
+
         try:
             self._token = json_data["access_token"]
             self._refresh_token = json_data["refresh_token"]
@@ -85,9 +83,6 @@ class Auth(AuthBase):
             raise SyntaxError(
                 "The server did not return a valid expires_in: {0}".format(json_data)
             )
-        logger.debug(self.authorization)
-        logger.debug(self._refresh_token)
-        logger.debug(self._expiry_date)
 
     def _should_refresh_token(self):
         """Returns True if the token is expired / about to expire"""
