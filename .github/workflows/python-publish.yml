@@ -35,6 +35,7 @@ jobs:
     - name: Publish PyPi package
       uses: code-specialist/pypi-poetry-publish@v1
       with:
-        POETRY_CORE_VERSION: 1.2.0
+        PYTHON_VERSION: 3.7
+        POETRY_VERSION: 1.3.2
         ACCESS_TOKEN: ${{ secrets.ITKAVEHOME_GITHUB_TOKEN }}
         PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
