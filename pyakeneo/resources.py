@@ -2,11 +2,10 @@ import json
 import math
 
 import requests
-from akeneo_api_client import interfaces
-from logzero import logger
 
-from akeneo_api_client.result import Result
-from akeneo_api_client.utils import urljoin
+from pyakeneo import interfaces
+from pyakeneo.result import Result
+from pyakeneo.utils import urljoin
 
 
 class CreatableResource(interfaces.CreatableResourceInterface):
@@ -379,27 +378,27 @@ class AssociationTypesPool(
     pass
 
 
-class AssetsPool(ResourcePool,
-                 CodeBasedResource,
-                 GettableResource,
-                 ListableResource,
-                 UpdatableResource,
-                 UpdatableListResource,
-                 DeletableResource,):
+class AssetsPool(
+    ResourcePool,
+    CodeBasedResource,
+    GettableResource,
+    ListableResource,
+    UpdatableResource,
+    UpdatableListResource,
+    DeletableResource,
+):
     pass
 
 
-class AssetFamilyPool(ResourcePool,
-                      CodeBasedResource,
-                      GettableResource,
-                      ListableResource,
-                      UpdatableResource,):
-
+class AssetFamilyPool(
+    ResourcePool,
+    CodeBasedResource,
+    GettableResource,
+    ListableResource,
+    UpdatableResource,
+):
     def assets(self, code):
-        return AssetsPool(
-            urljoin(self._endpoint, code, 'assets/'),
-            self._session
-        )
+        return AssetsPool(urljoin(self._endpoint, code, "assets/"), self._session)
 
 
 class ReferenceEntityRecordPool(

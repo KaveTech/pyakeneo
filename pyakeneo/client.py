@@ -1,24 +1,13 @@
 import requests
-
-from akeneo_api_client.auth import Auth
-from akeneo_api_client.resources import (
-    AssociationTypesPool,
-    AttributesPool,
-    AttributeGroupsPool,
-    CategoriesPool,
-    ChannelsPool,
-    CurrenciesPool,
-    FamiliesPool,
-    LocalesPool,
-    MeasureFamiliesPool,
-    MediaFilesPool,
-    ProductsPool,
-    ProductModelsPool,
-    PublishedProductsPool,
-    AssetFamilyPool,
-    ReferenceEntityPool,
-)
-from akeneo_api_client.utils import urljoin
+from pyakeneo.auth import Auth
+from pyakeneo.resources import (AssetFamilyPool, AssociationTypesPool,
+                                AttributeGroupsPool, AttributesPool,
+                                CategoriesPool, ChannelsPool, CurrenciesPool,
+                                FamiliesPool, LocalesPool, MeasureFamiliesPool,
+                                MediaFilesPool, ProductModelsPool,
+                                ProductsPool, PublishedProductsPool,
+                                ReferenceEntityPool)
+from pyakeneo.utils import urljoin
 
 
 class Client:
@@ -34,6 +23,15 @@ class Client:
         session=None,
         auth=None,
     ):
+        print(
+            base_url,
+            client_id,
+            secret,
+            username,
+            password,
+            session,
+            auth
+        )
         """Expect credential
         1) as auth, or
         2) as client_id+secret+username+password, or
@@ -65,34 +63,52 @@ class Client:
             self._session.auth = auth
         self._session.headers.update({"Content-Type": "application/json"})
         self._resources = {
-            'association_types': AssociationTypesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'association-types/'), session),
-            'attributes': AttributesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'attributes/'), session),
-            'attribute_groups': AttributeGroupsPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'attribute-groups/'), session),
-            'categories': CategoriesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'categories/'), session),
-            'channels': ChannelsPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'channels/'), session),
-            'currencies': CurrenciesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'currencies/'), session),
-            'families': FamiliesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'families/'), session),
-            'locales': LocalesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'locales/'), session),
-            'measure_families': MeasureFamiliesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'measure-families/'), session),
-            'media_files': MediaFilesPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'media-files/'), session),
-            'products': ProductsPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'products/'), session),
-            'product_models': ProductModelsPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'product-models/'), session),
-            'published_products': PublishedProductsPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'published-products/'), session),
-            'asset_families': AssetFamilyPool(
-                urljoin(self._base_url, self.BASIC_API_PATH, 'asset-families/'), session),
+            "association_types": AssociationTypesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "association-types/"),
+                session,
+            ),
+            "attributes": AttributesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "attributes/"), session
+            ),
+            "attribute_groups": AttributeGroupsPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "attribute-groups/"),
+                session,
+            ),
+            "categories": CategoriesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "categories/"), session
+            ),
+            "channels": ChannelsPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "channels/"), session
+            ),
+            "currencies": CurrenciesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "currencies/"), session
+            ),
+            "families": FamiliesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "families/"), session
+            ),
+            "locales": LocalesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "locales/"), session
+            ),
+            "measure_families": MeasureFamiliesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "measure-families/"),
+                session,
+            ),
+            "media_files": MediaFilesPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "media-files/"), session
+            ),
+            "products": ProductsPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "products/"), session
+            ),
+            "product_models": ProductModelsPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "product-models/"), session
+            ),
+            "published_products": PublishedProductsPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "published-products/"),
+                session,
+            ),
+            "asset_families": AssetFamilyPool(
+                urljoin(self._base_url, self.BASIC_API_PATH, "asset-families/"), session
+            ),
             "reference_entities": ReferenceEntityPool(
                 urljoin(self._base_url, self.BASIC_API_PATH, "reference-entities/"),
                 session,

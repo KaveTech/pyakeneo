@@ -1,11 +1,11 @@
-import requests
-from requests.auth import AuthBase
-from akeneo_api_client.utils import urljoin
 import base64
 import json
 from time import time
 
-from logzero import logger
+import requests
+from requests.auth import AuthBase
+
+from pyakeneo.utils import urljoin
 
 
 class Auth(AuthBase):

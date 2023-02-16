@@ -1,5 +1,5 @@
-from collections import namedtuple
 import json
+from collections import namedtuple
 
 
 def urljoin(*args):

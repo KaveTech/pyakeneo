@@ -1,30 +1,27 @@
-import akeneo_api_client
-import akeneo_api_client.utils
-
+import logging
+import structlog
 import unittest
 
-import logging
-import logzero
+import pyakeneo
+import pyakeneo.utils
+
+logger = structlog.get_logger()
 
 
 class TestUtils(unittest.TestCase):
-    def setUp(self):
-        logzero.loglevel(logging.DEBUG)
-    
     def test_urljoin(self):
         self.assertEqual(
-            akeneo_api_client.utils.urljoin('http://a.com/', 'b/', 'c/', 'd'),
-            'http://a.com/b/c/d'
+            pyakeneo.utils.urljoin("http://a.com/", "b/", "c/", "d"),
+            "http://a.com/b/c/d",
         )
         self.assertEqual(
-            akeneo_api_client.utils.urljoin('http://a.com/', 'b//', 'c//', 'd'),
-            'http://a.com/b/c/d'
+            pyakeneo.utils.urljoin("http://a.com/", "b//", "c//", "d"),
+            "http://a.com/b/c/d",
         )
         self.assertEqual(
-            akeneo_api_client.utils.urljoin('http://a.com/', 'b', 'c', 'd'),
-            'http://a.com/b/c/d'
+            pyakeneo.utils.urljoin("http://a.com/", "b", "c", "d"), "http://a.com/b/c/d"
         )
         self.assertEqual(
-            akeneo_api_client.utils.urljoin('http://a.com/', '/b/', 'c', 'd'),
-            'http://a.com/b/c/d'
+            pyakeneo.utils.urljoin("http://a.com/", "/b/", "c", "d"),
+            "http://a.com/b/c/d",
         )
