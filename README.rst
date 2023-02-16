@@ -61,6 +61,7 @@ follow:
 .. _Akeneo PIM API: https://api.akeneo.com/
 .. _poetry: https://github.com/python-poetry/poetry
 .. _VCR.py: http://vcrpy.readthedocs.io/en/latest/index.html
+.. _pyproject.toml: https://python-poetry.org/docs/pyproject/
 
 .. |Build Status| image:: https://travis-ci.org/matthieudelaro/akeneo_api_client.svg?branch=master
    :target: https://travis-ci.org/matthieudelaro/akeneo_api_client

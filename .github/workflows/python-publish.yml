@@ -29,11 +29,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install poetry==1.2.0
+        pip install poetry
     - name: Build package
       run: poetry build
     - name: Publish PyPi package
       uses: code-specialist/pypi-poetry-publish@v1
       with:
+        POETRY_CORE_VERSION: 1.2.0
         ACCESS_TOKEN: ${{ secrets.ITKAVEHOME_GITHUB_TOKEN }}
         PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
