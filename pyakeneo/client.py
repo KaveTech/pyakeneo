@@ -23,15 +23,6 @@ class Client:
         session=None,
         auth=None,
     ):
-        print(
-            base_url,
-            client_id,
-            secret,
-            username,
-            password,
-            session,
-            auth
-        )
         """Expect credential
         1) as auth, or
         2) as client_id+secret+username+password, or
