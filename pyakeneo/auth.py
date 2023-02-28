@@ -37,17 +37,19 @@ class Auth(AuthBase):
             ).decode("utf-8")
         )
         headers = {"Content-Type": "application/json", "Authorization": authorization}
-        if grant_type == "password":
+        if grant_type == "refresh_token" and self._refresh_token:
+            data = json.dumps(
+                {"grant_type": "refresh_token", "refresh_token": self._refresh_token}
+            )
+        elif grant_type == "password" or (
+            grant_type == "refresh_token" and not self._refresh_token
+        ):
             data = json.dumps(
                 {
                     "grant_type": "password",
                     "username": self._username,
                     "password": self._password,
                 }
-            )
-        elif grant_type == "refresh_token":
-            data = json.dumps(
-                {"grant_type": "refresh_token", "refresh_token": self._refresh_token}
             )
         else:
             raise ValueError(
