@@ -59,8 +59,7 @@ class Auth(AuthBase):
 
         url = urljoin(self._base_url, self.TOKEN_PATH)
         r = requests.post(url, data=data, headers=headers)
-        if r.status_code != 200:
-            raise requests.HTTPError("Status code: {0}".format(r.status_code))
+        r.raise_for_status()
 
         try:
             json_data = json.loads(r.text)

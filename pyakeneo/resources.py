@@ -30,13 +30,8 @@ class ListableResource(interfaces.ListableResourceInterface):
 
         url = self._endpoint
         r = self._session.get(url, params=args)
+        r.raise_for_status()
 
-        if r.status_code != 200:
-            raise requests.HTTPError(
-                "Status code: {0}. Content: {1}".format(r.status_code, r.text)
-            )
-
-        # c = Collection(self._session, json_text=r.text)
         c = Result.from_json_text(self._session, json_text=r.text)
         return c
 
@@ -65,11 +60,7 @@ class GettableResource(interfaces.GettableResourceInterface):
 
         url = urljoin(self._endpoint, code)
         r = self._session.get(url)
-
-        if r.status_code != 200:
-            raise requests.HTTPError(
-                "The item {0} doesn't exit: {1}".format(code, r.status_code)
-            )
+        r.raise_for_status()
 
         return json.loads(r.text)  # returns item as a dict
 
@@ -130,8 +121,8 @@ class UpdatableListResource(interfaces.UpdatableResourceInterface):
             num = 100
             n = math.ceil(len(items) / num)
 
-            itemss = [items[i : i + num] for i in range(0, (n - 1) * num, num)]
-            itemss.append(items[(n - 1) * num :])
+            itemss = [items[i: i + num] for i in range(0, (n - 1) * num, num)]
+            itemss.append(items[(n - 1) * num:])
 
             return [
                 item
@@ -140,9 +131,7 @@ class UpdatableListResource(interfaces.UpdatableResourceInterface):
             ]
 
         if r.status_code != 200:
-            raise requests.HTTPError(
-                "Status code: {0}. Content: {1}".format(r.status_code, r.text)
-            )
+            r.raise_for_status()
 
         else:
             statuses = []
@@ -412,6 +401,29 @@ class ReferenceEntityRecordPool(
     pass
 
 
+class ReferenceEntityAttributeOptionsPool(
+    ResourcePool,
+    CodeBasedResource,
+    GettableResource,
+    ListableResource,
+    UpdatableResource,
+):
+    pass
+
+
+class ReferenceEntityAttributePool(
+    ResourcePool,
+    CodeBasedResource,
+    GettableResource,
+    ListableResource,
+    UpdatableResource,
+):
+    def options(self, code):
+        return ReferenceEntityAttributeOptionsPool(
+            urljoin(self._endpoint, code, "options/"), self._session
+        )
+
+
 class ReferenceEntityPool(
     ResourcePool,
     CodeBasedResource,
@@ -422,4 +434,9 @@ class ReferenceEntityPool(
     def records(self, entity_code):
         return ReferenceEntityRecordPool(
             urljoin(self._endpoint, entity_code, "records/"), self._session
+        )
+
+    def attributes(self, entity_code):
+        return ReferenceEntityAttributePool(
+            urljoin(self._endpoint, entity_code, "attributes/"), self._session
         )
