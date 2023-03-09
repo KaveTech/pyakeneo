@@ -58,7 +58,7 @@ class Result(object):
 
     def fetch_next_page(self):
         """Return True if a next page exists. Returns False otherwise."""
-        if self.is_paginated(self._items) and self._link_next:
+        if self._link_next:
             response = self._session.get(self._link_next)
             if response.ok:
                 next_page = Result.parse_page(json.loads(response.text))
