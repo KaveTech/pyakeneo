@@ -30,13 +30,8 @@ class ListableResource(interfaces.ListableResourceInterface):
 
         url = self._endpoint
         r = self._session.get(url, params=args)
+        r.raise_for_status()
 
-        if r.status_code != 200:
-            raise requests.HTTPError(
-                "Status code: {0}. Content: {1}".format(r.status_code, r.text)
-            )
-
-        # c = Collection(self._session, json_text=r.text)
         c = Result.from_json_text(self._session, json_text=r.text)
         return c
 
@@ -65,11 +60,7 @@ class GettableResource(interfaces.GettableResourceInterface):
 
         url = urljoin(self._endpoint, code)
         r = self._session.get(url)
-
-        if r.status_code != 200:
-            raise requests.HTTPError(
-                "The item {0} doesn't exit: {1}".format(code, r.status_code)
-            )
+        r.raise_for_status()
 
         return json.loads(r.text)  # returns item as a dict
 
@@ -140,9 +131,7 @@ class UpdatableListResource(interfaces.UpdatableResourceInterface):
             ]
 
         if r.status_code != 200:
-            raise requests.HTTPError(
-                "Status code: {0}. Content: {1}".format(r.status_code, r.text)
-            )
+            r.raise_for_status()
 
         else:
             statuses = []
