@@ -123,7 +123,7 @@ class Result(object):
     def parse_non_paginated(cls, json_data: list) -> Dict:
         link_self = ""
         if json_data and "_links" in json_data[0]:
-            link_self = json_data["_links"]["self"]["href"]
+            link_self = json_data[0]["_links"]["self"]["href"]
         return {
             "items": json_data,
             "count": len(json_data),
