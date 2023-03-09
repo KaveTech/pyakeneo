@@ -121,8 +121,8 @@ class UpdatableListResource(interfaces.UpdatableResourceInterface):
             num = 100
             n = math.ceil(len(items) / num)
 
-            itemss = [items[i : i + num] for i in range(0, (n - 1) * num, num)]
-            itemss.append(items[(n - 1) * num :])
+            itemss = [items[i: i + num] for i in range(0, (n - 1) * num, num)]
+            itemss.append(items[(n - 1) * num:])
 
             return [
                 item
@@ -401,6 +401,29 @@ class ReferenceEntityRecordPool(
     pass
 
 
+class ReferenceEntityAttributeOptionsPool(
+    ResourcePool,
+    CodeBasedResource,
+    GettableResource,
+    ListableResource,
+    UpdatableResource,
+):
+    pass
+
+
+class ReferenceEntityAttributePool(
+    ResourcePool,
+    CodeBasedResource,
+    GettableResource,
+    ListableResource,
+    UpdatableResource,
+):
+    def options(self, code):
+        return ReferenceEntityAttributeOptionsPool(
+            urljoin(self._endpoint, code, "options/"), self._session
+        )
+
+
 class ReferenceEntityPool(
     ResourcePool,
     CodeBasedResource,
@@ -411,4 +434,9 @@ class ReferenceEntityPool(
     def records(self, entity_code):
         return ReferenceEntityRecordPool(
             urljoin(self._endpoint, entity_code, "records/"), self._session
+        )
+
+    def attributes(self, entity_code):
+        return ReferenceEntityAttributePool(
+            urljoin(self._endpoint, entity_code, "attributes/"), self._session
         )
