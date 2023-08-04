@@ -20,7 +20,7 @@ class Client:
             secret: str = None,
             username: str = None,
             password: str = None,
-            session: Auth = None,
+            session: requests.Session = None,
     ):
         if not session and not (client_id and secret and username and password):
             # No credentials provided neither via client_id+secret+username+password nor via session
@@ -36,7 +36,7 @@ class Client:
 
         self._init(base_url, session)
 
-    def _make_auth(self, base_url, client_id, secret, username, password):
+    def _make_auth(self, base_url, client_id, secret, username, password) -> Auth:
         return Auth(base_url, client_id, secret, username, password)
 
     def _init(self, base_url, session):
