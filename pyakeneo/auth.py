@@ -24,10 +24,19 @@ class Auth(AuthBase):
         self._token = None
         self._refresh_token = None
         self._expiry_date = None
+        self._session = requests.Session()
 
     @property
     def authorization(self):
         return "Bearer {0}".format(self._token)
+
+    @property
+    def session(self):
+        return self._session
+
+    @session.setter
+    def session(self, session):
+        self._session = session
 
     def _request_a_token(self, grant_type="password"):
         """Requests a token. Throws in case of error"""
@@ -58,7 +67,7 @@ class Auth(AuthBase):
             )
 
         url = urljoin(self._base_url, self.TOKEN_PATH)
-        r = requests.post(url, data=data, headers=headers)
+        r = self._session.post(url, data=data, headers=headers)
         r.raise_for_status()
 
         try:
