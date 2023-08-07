@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyakeneo"
-version = "0.5.2"
+version = "0.6.0"
 description = "Python client for the Akeneo API REST"
 authors = ["Kave Tech <kavetech@kavehome.com>"]
 readme = "README.rst"
