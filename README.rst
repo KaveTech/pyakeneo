@@ -26,17 +26,30 @@ Installation
 Usage
 -----
 
-A simple example is provided in `docs/example_exporter.py`_.
+Initialization of the client
 
-If you experience issues when importing modules, run the examples as follow:
+.. code:: python
 
-.. code:: bash
+        from pyakeneo.client import Client
+        c = Client(
+                AKENEO_URL, 
+                username=AKENEO_USER, 
+                password=AKENEO_PASSWORD
+                client_id=AKENEO_CLIENT_ID, 
+                secret=AKENEO_SECRET
+        )
 
-        cd docs
-        poetry run python example_exporter.py
-        
+Then, you have a pool for every data type in Akeneo PIM.
 
-.. _docs/example_exporter.py: https://raw.githubusercontent.com/kavetech/akeneo_api_client/master/docs/example.py
+.. code:: python
+
+        # products
+        c.products.fetch_item('ITEM_SKU')
+        c.products.fetch_list({'limit': 100, 'page': 1, 'pagination_type': 'page'})
+
+        # assets
+        c.asset_families.assets('asset_family_code').fetch_item('ASSET_CODE')
+        c.asset_families.assets('asset_family_code').fetch_list({'search': {"code":[{"operator":"IN","value":["CODE_1", "CODE_2"]}]}})
 
 Tests
 -----
