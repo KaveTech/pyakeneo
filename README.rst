@@ -34,9 +34,9 @@ Initialization of the client
         c = Client(
                 AKENEO_URL, 
                 username=AKENEO_USER, 
-                password=AKENEO_PASSWORD
+                password=AKENEO_PASSWORD,
                 client_id=AKENEO_CLIENT_ID, 
-                secret=AKENEO_SECRET
+                secret=AKENEO_SECRET,
         )
 
 Then, you have a pool for every data type in Akeneo PIM.
