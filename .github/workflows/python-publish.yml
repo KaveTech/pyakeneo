@@ -11,6 +11,12 @@ name: Upload Python Package
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release tag to publish'
+        required: false
+        default: 'latest'
 
 permissions:
   contents: read
