@@ -1,7 +1,6 @@
 import json
 import math
 
-import requests
 
 from pyakeneo import interfaces
 from pyakeneo.result import Result
@@ -13,10 +12,7 @@ class CreatableResource(interfaces.CreatableResourceInterface):
         url = self._endpoint
         r = self._session.post(url, data=json.dumps(item, separators=(",", ":")))
 
-        if r.status_code != 201:
-            raise requests.HTTPError(
-                "Status code: {0}. Content: {1}".format(r.status_code, r.text)
-            )
+        r.raise_for_status()
 
 
 class ListableResource(interfaces.ListableResourceInterface):
@@ -24,7 +20,7 @@ class ListableResource(interfaces.ListableResourceInterface):
         """Send a request with search, etc.
         Returns an iterable list (Collection)"""
         if args:
-            for (key, value) in args.items():
+            for key, value in args.items():
                 if not isinstance(value, str):
                     args[key] = json.dumps(value)
 
@@ -76,10 +72,7 @@ class DeletableResource(interfaces.DeletableResourceInterface):
         url = urljoin(self._endpoint, code)
         r = self._session.delete(url)
 
-        if r.status_code != 204:
-            raise requests.HTTPError(
-                "The item {0} doesn't exit. Content: {1}".format(code, r.text)
-            )
+        r.raise_for_status()
 
 
 class UpdatableResource(interfaces.UpdatableResourceInterface):
@@ -91,13 +84,9 @@ class UpdatableResource(interfaces.UpdatableResourceInterface):
         r = self._session.patch(
             url, data=json.dumps(item_values, separators=(",", ":"))
         )
+        r.raise_for_status()
 
-        if r.status_code not in [201, 204]:
-            raise requests.HTTPError(
-                "Status code: {0}. Content: {1}".format(r.status_code, r.text)
-            )
-        else:
-            return r.headers.get("Location")
+        return r.headers.get("Location")
 
 
 class UpdatableListResource(interfaces.UpdatableResourceInterface):
@@ -121,8 +110,8 @@ class UpdatableListResource(interfaces.UpdatableResourceInterface):
             num = 100
             n = math.ceil(len(items) / num)
 
-            itemss = [items[i: i + num] for i in range(0, (n - 1) * num, num)]
-            itemss.append(items[(n - 1) * num:])
+            itemss = [items[i : i + num] for i in range(0, (n - 1) * num, num)]
+            itemss.append(items[(n - 1) * num :])
 
             return [
                 item
@@ -130,14 +119,12 @@ class UpdatableListResource(interfaces.UpdatableResourceInterface):
                 for item in self.update_create_list(those_items)
             ]
 
-        if r.status_code != 200:
-            r.raise_for_status()
+        r.raise_for_status()
 
-        else:
-            statuses = []
-            for line in r.text.split("\n"):
-                statuses.append(json.loads(line))
-            return statuses
+        statuses = []
+        for line in r.text.split("\n"):
+            statuses.append(json.loads(line))
+        return statuses
 
 
 class IdentifierBasedResource(interfaces.CodeBasedResourceInterface):
