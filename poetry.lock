@@ -4,9 +4,10 @@
 name = "alabaster"
 version = "0.7.13"
 description = "A configurable sidebar-enabled Sphinx theme"
-optional = false
+optional = true
 python-versions = ">=3.6"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "alabaster-0.7.13-py3-none-any.whl", hash = "sha256:1ee19aca801bbabb5ba3f5f258e4422dfa86f82f3e9cefb0859b283cdd7f62a3"},
     {file = "alabaster-0.7.13.tar.gz", hash = "sha256:a27a4a084d5e690e16e01e03ad2b2e552c61a65469419b907243193de1a84ae2"},
@@ -16,9 +17,10 @@ files = [
 name = "babel"
 version = "2.11.0"
 description = "Internationalization utilities"
-optional = false
+optional = true
 python-versions = ">=3.6"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "Babel-2.11.0-py3-none-any.whl", hash = "sha256:1ad3eca1c885218f6dce2ab67291178944f810a10a9b5f3cb8382a5a232b64fe"},
     {file = "Babel-2.11.0.tar.gz", hash = "sha256:5ef4b3226b0180dedded4229651c8b0e1a3a6a2837d45a073272f313e4cf97f6"},
@@ -33,7 +35,7 @@ version = "2022.12.7"
 description = "Python package for providing Mozilla's CA Bundle."
 optional = false
 python-versions = ">=3.6"
-groups = ["main", "dev"]
+groups = ["main"]
 files = [
     {file = "certifi-2022.12.7-py3-none-any.whl", hash = "sha256:4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18"},
     {file = "certifi-2022.12.7.tar.gz", hash = "sha256:35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3"},
@@ -45,7 +47,7 @@ version = "3.0.1"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
 optional = false
 python-versions = "*"
-groups = ["main", "dev"]
+groups = ["main"]
 files = [
     {file = "charset-normalizer-3.0.1.tar.gz", hash = "sha256:ebea339af930f8ca5d7a699b921106c6e29c617fe9606fa7baa043c1cdae326f"},
     {file = "charset_normalizer-3.0.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:88600c72ef7587fe1708fd242b385b6ed4b8904976d5da0893e31df8b3480cb6"},
@@ -141,10 +143,10 @@ files = [
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
-optional = false
+optional = true
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
-groups = ["dev"]
-markers = "sys_platform == \"win32\""
+groups = ["main"]
+markers = "extra == \"dev\" and sys_platform == \"win32\""
 files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
@@ -154,9 +156,10 @@ files = [
 name = "docutils"
 version = "0.19"
 description = "Docutils -- Python Documentation Utilities"
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "docutils-0.19-py3-none-any.whl", hash = "sha256:5e1de4d849fee02c63b040a4a3fd567f4ab104defd8a5511fbbc24a8a017efbc"},
     {file = "docutils-0.19.tar.gz", hash = "sha256:33995a6753c30b7f577febfc2c50411fec6aac7f7ffeb7c4cfe5991072dcf9e6"},
@@ -168,7 +171,7 @@ version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
 optional = false
 python-versions = ">=3.5"
-groups = ["main", "dev"]
+groups = ["main"]
 files = [
     {file = "idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2"},
     {file = "idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
@@ -178,9 +181,10 @@ files = [
 name = "imagesize"
 version = "1.4.1"
 description = "Getting image size from png/jpeg/jpeg2000/gif file"
-optional = false
+optional = true
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "imagesize-1.4.1-py2.py3-none-any.whl", hash = "sha256:0d8d18d08f840c19d0ee7ca1fd82490fdc3729b7ac93f49870406ddde8ef8d8b"},
     {file = "imagesize-1.4.1.tar.gz", hash = "sha256:69150444affb9cb0d5cc5a92b3676f0b2fb7cd9ae39e947a5e11a36b4497cd4a"},
@@ -190,9 +194,10 @@ files = [
 name = "iniconfig"
 version = "2.1.0"
 description = "brain-dead simple config-ini parsing"
-optional = false
+optional = true
 python-versions = ">=3.8"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "iniconfig-2.1.0-py3-none-any.whl", hash = "sha256:9deba5723312380e77435581c6bf4935c94cbfab9b1ed33ef8d238ea168eb760"},
     {file = "iniconfig-2.1.0.tar.gz", hash = "sha256:3abbd2e30b36733fee78f9c7f7308f2d0050e88f0087fd25c2645f63c773e1c7"},
@@ -202,9 +207,10 @@ files = [
 name = "jinja2"
 version = "3.1.2"
 description = "A very fast and expressive template engine."
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "Jinja2-3.1.2-py3-none-any.whl", hash = "sha256:6088930bfe239f0e6710546ab9c19c9ef35e29792895fed6e6e31a023a182a61"},
     {file = "Jinja2-3.1.2.tar.gz", hash = "sha256:31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852"},
@@ -220,9 +226,10 @@ i18n = ["Babel (>=2.7)"]
 name = "markupsafe"
 version = "2.1.2"
 description = "Safely add untrusted strings to HTML/XML markup."
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "MarkupSafe-2.1.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:665a36ae6f8f20a4676b53224e33d456a6f5a72657d9c83c2aa00765072f31f7"},
     {file = "MarkupSafe-2.1.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:340bea174e9761308703ae988e982005aedf427de816d1afe98147668cc03036"},
@@ -280,9 +287,10 @@ files = [
 name = "multidict"
 version = "6.0.4"
 description = "multidict implementation"
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "multidict-6.0.4-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:0b1a97283e0c85772d613878028fec909f003993e1007eafa715b24b377cb9b8"},
     {file = "multidict-6.0.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:eeb6dcc05e911516ae3d1f207d4b0520d07f54484c49dfc294d6e7d63b734171"},
@@ -364,9 +372,10 @@ files = [
 name = "packaging"
 version = "25.0"
 description = "Core utilities for Python packages"
-optional = false
+optional = true
 python-versions = ">=3.8"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "packaging-25.0-py3-none-any.whl", hash = "sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484"},
     {file = "packaging-25.0.tar.gz", hash = "sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f"},
@@ -376,9 +385,10 @@ files = [
 name = "pluggy"
 version = "1.6.0"
 description = "plugin and hook calling mechanisms for python"
-optional = false
+optional = true
 python-versions = ">=3.9"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "pluggy-1.6.0-py3-none-any.whl", hash = "sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746"},
     {file = "pluggy-1.6.0.tar.gz", hash = "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3"},
@@ -392,9 +402,10 @@ testing = ["coverage", "pytest", "pytest-benchmark"]
 name = "pygments"
 version = "2.14.0"
 description = "Pygments is a syntax highlighting package written in Python."
-optional = false
+optional = true
 python-versions = ">=3.6"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "Pygments-2.14.0-py3-none-any.whl", hash = "sha256:fa7bd7bd2771287c0de303af8bfdfc731f51bd2c6a47ab69d117138893b82717"},
     {file = "Pygments-2.14.0.tar.gz", hash = "sha256:b3ed06a9e8ac9a9aae5a6f5dbe78a8a58655d17b43b93c078f094ddc476ae297"},
@@ -407,9 +418,10 @@ plugins = ["importlib-metadata ; python_version < \"3.8\""]
 name = "pytest"
 version = "7.4.4"
 description = "pytest: simple powerful testing with Python"
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "pytest-7.4.4-py3-none-any.whl", hash = "sha256:b090cdf5ed60bf4c45261be03239c2c1c22df034fbffe691abe93cd80cea01d8"},
     {file = "pytest-7.4.4.tar.gz", hash = "sha256:2cf0005922c6ace4a3e2ec8b4080eb0d9753fdc93107415332f50ce9e7994280"},
@@ -428,9 +440,10 @@ testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "no
 name = "pytz"
 version = "2022.7.1"
 description = "World timezone definitions, modern and historical"
-optional = false
+optional = true
 python-versions = "*"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "pytz-2022.7.1-py2.py3-none-any.whl", hash = "sha256:78f4f37d8198e0627c5f1143240bb0206b8691d8d7ac6d78fee88b78733f8c4a"},
     {file = "pytz-2022.7.1.tar.gz", hash = "sha256:01a0681c4b9684a28304615eba55d1ab31ae00bf68ec157ec3708a8182dbbcd0"},
@@ -440,9 +453,10 @@ files = [
 name = "pyyaml"
 version = "6.0"
 description = "YAML parser and emitter for Python"
-optional = false
+optional = true
 python-versions = ">=3.6"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "PyYAML-6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d4db7c7aef085872ef65a8fd7d6d09a14ae91f691dec3e87ee5ee0539d516f53"},
     {file = "PyYAML-6.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:9df7ed3b3d2e0ecfe09e14741b857df43adb5a3ddadc919a2d94fbdf78fea53c"},
@@ -488,21 +502,21 @@ files = [
 
 [[package]]
 name = "requests"
-version = "2.28.2"
+version = "2.32.5"
 description = "Python HTTP for Humans."
 optional = false
-python-versions = ">=3.7, <4"
-groups = ["main", "dev"]
+python-versions = ">=3.9"
+groups = ["main"]
 files = [
-    {file = "requests-2.28.2-py3-none-any.whl", hash = "sha256:64299f4909223da747622c030b781c0d7811e359c37124b4bd368fb8c6518baa"},
-    {file = "requests-2.28.2.tar.gz", hash = "sha256:98b1b2782e3c6c4904938b84c0eb932721069dfdb9134313beff7c83c2df24bf"},
+    {file = "requests-2.32.5-py3-none-any.whl", hash = "sha256:2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6"},
+    {file = "requests-2.32.5.tar.gz", hash = "sha256:dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"},
 ]
 
 [package.dependencies]
 certifi = ">=2017.4.17"
-charset-normalizer = ">=2,<4"
+charset_normalizer = ">=2,<4"
 idna = ">=2.5,<4"
-urllib3 = ">=1.21.1,<1.27"
+urllib3 = ">=1.21.1,<3"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
@@ -512,9 +526,10 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 name = "setuptools"
 version = "67.3.2"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "setuptools-67.3.2-py3-none-any.whl", hash = "sha256:bb6d8e508de562768f2027902929f8523932fcd1fb784e6d573d2cafac995a48"},
     {file = "setuptools-67.3.2.tar.gz", hash = "sha256:95f00380ef2ffa41d9bba85d95b27689d923c93dfbafed4aecd7cf988a25e012"},
@@ -529,9 +544,10 @@ testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
-optional = false
+optional = true
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
@@ -541,9 +557,10 @@ files = [
 name = "snowballstemmer"
 version = "2.2.0"
 description = "This package provides 29 stemmers for 28 languages generated from Snowball algorithms."
-optional = false
+optional = true
 python-versions = "*"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "snowballstemmer-2.2.0-py2.py3-none-any.whl", hash = "sha256:c8e1716e83cc398ae16824e5572ae04e0d9fc2c6b985fb0f900f5f0c96ecba1a"},
     {file = "snowballstemmer-2.2.0.tar.gz", hash = "sha256:09b16deb8547d3412ad7b590689584cd0fe25ec8db3be37788be3810cbf19cb1"},
@@ -553,9 +570,10 @@ files = [
 name = "sphinx"
 version = "1.6.5"
 description = "Python documentation generator"
-optional = false
+optional = true
 python-versions = "*"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "Sphinx-1.6.5-py2.py3-none-any.whl", hash = "sha256:fdf77f4f30d84a314c797d67fe7d1b46665e6c48a25699d7bf0610e05a2221d4"},
     {file = "Sphinx-1.6.5.tar.gz", hash = "sha256:c6de5dbdbb7a0d7d2757f4389cc00e8f6eb3c49e1772378967a12cfcf2cfe098"},
@@ -583,9 +601,10 @@ websupport = ["sqlalchemy (>=0.9)", "whoosh (>=2.0)"]
 name = "sphinxcontrib-serializinghtml"
 version = "1.1.5"
 description = "sphinxcontrib-serializinghtml is a sphinx extension which outputs \"serialized\" HTML files (json and pickle)."
-optional = false
+optional = true
 python-versions = ">=3.5"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "sphinxcontrib-serializinghtml-1.1.5.tar.gz", hash = "sha256:aa5f6de5dfdf809ef505c4895e51ef5c9eac17d0f287933eb49ec495280b6952"},
     {file = "sphinxcontrib_serializinghtml-1.1.5-py2.py3-none-any.whl", hash = "sha256:352a9a00ae864471d3a7ead8d7d79f5fc0b57e8b3f95e9867eb9eb28999b92fd"},
@@ -599,9 +618,10 @@ test = ["pytest"]
 name = "sphinxcontrib-websupport"
 version = "1.2.4"
 description = "Sphinx API for Web Apps"
-optional = false
+optional = true
 python-versions = ">=3.5"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "sphinxcontrib-websupport-1.2.4.tar.gz", hash = "sha256:4edf0223a0685a7c485ae5a156b6f529ba1ee481a1417817935b20bde1956232"},
     {file = "sphinxcontrib_websupport-1.2.4-py2.py3-none-any.whl", hash = "sha256:6fc9287dfc823fe9aa432463edd6cea47fa9ebbf488d7f289b322ffcfca075c7"},
@@ -638,7 +658,7 @@ version = "1.26.14"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
-groups = ["main", "dev"]
+groups = ["main"]
 files = [
     {file = "urllib3-1.26.14-py2.py3-none-any.whl", hash = "sha256:75edcdc2f7d85b137124a6c3c9fc3933cdeaa12ecb9a6a959f22797a0feca7e1"},
     {file = "urllib3-1.26.14.tar.gz", hash = "sha256:076907bf8fd355cde77728471316625a4d2f7e713c125f51953bb5b3eecf4f72"},
@@ -653,9 +673,10 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 name = "vcrpy"
 version = "4.2.1"
 description = "Automatically mock your HTTP interactions to simplify and speed up testing"
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "vcrpy-4.2.1-py2.py3-none-any.whl", hash = "sha256:efac3e2e0b2af7686f83a266518180af7a048619b2f696e7bad9520f5e2eac09"},
     {file = "vcrpy-4.2.1.tar.gz", hash = "sha256:7cd3e81a2c492e01c281f180bcc2a86b520b173d2b656cb5d89d99475423e013"},
@@ -671,9 +692,10 @@ yarl = "*"
 name = "vcrpy-unittest"
 version = "0.1.7"
 description = "Python unittest integration for vcr.py"
-optional = false
+optional = true
 python-versions = "*"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "vcrpy-unittest-0.1.7.tar.gz", hash = "sha256:a508d8848e678243f1c0d4b152a645c18403a8da517b8a44dfcfc35a675ec981"},
     {file = "vcrpy_unittest-0.1.7-py2.py3-none-any.whl", hash = "sha256:b5e2d78bf4c13bc04dca04061dda934abba5f2c9d5201f148747800ff80a762b"},
@@ -686,9 +708,10 @@ vcrpy = "*"
 name = "wrapt"
 version = "1.14.1"
 description = "Module for decorators, wrappers and monkey patching."
-optional = false
+optional = true
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "wrapt-1.14.1-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:1b376b3f4896e7930f1f772ac4b064ac12598d1c38d04907e696cc4d794b43d3"},
     {file = "wrapt-1.14.1-cp27-cp27m-manylinux1_i686.whl", hash = "sha256:903500616422a40a98a5a3c4ff4ed9d0066f3b4c951fa286018ecdf0750194ef"},
@@ -770,9 +793,10 @@ files = [
 name = "yarl"
 version = "1.8.2"
 description = "Yet another URL library"
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "yarl-1.8.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:bb81f753c815f6b8e2ddd2eef3c855cf7da193b82396ac013c661aaa6cc6b0a5"},
     {file = "yarl-1.8.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:47d49ac96156f0928f002e2424299b2c91d9db73e08c4cd6742923a086f1c863"},
@@ -854,7 +878,10 @@ files = [
 idna = ">=2.0"
 multidict = ">=4.0"
 
+[extras]
+dev = ["pytest", "sphinx", "vcrpy", "vcrpy-unittest"]
+
 [metadata]
 lock-version = "2.1"
-python-versions = "^3.11"
-content-hash = "7f62941b536522e8703bd5b399934b92d9413c7cdc3949e420188fbf4bea5b21"
+python-versions = ">=3.11"
+content-hash = "f61e0736351590349b1fb5fc44a16accfa6d208ee975538ef04641e2f7779744"
