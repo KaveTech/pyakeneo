@@ -31,7 +31,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.7.1'
+        python-version: '3.11.13'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -41,6 +41,6 @@ jobs:
     - name: Publish PyPi package
       uses: code-specialist/pypi-poetry-publish@v1.2
       with:
-        PYTHON_VERSION: '3.7.1'
+        PYTHON_VERSION: '3.11.13'
         ACCESS_TOKEN: ${{ secrets.ITKAVEHOME_GITHUB_TOKEN }}
         PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
