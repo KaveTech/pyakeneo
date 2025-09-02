@@ -1,6 +1,6 @@
 [project]
 name = "pyakeneo"
-version = "0.7.2"
+version = "1.0.0"
 description = "Python client for the Akeneo API REST"
 authors = [{name = "Kave Tech", email = "kavetech@kavehome.com"}]
 readme = "README.rst"
