@@ -1,5 +1,6 @@
 import json
 from collections import namedtuple
+from typing import Any
 
 
 def urljoin(*args):
@@ -27,3 +28,14 @@ def _json_object_hook(data):
 def json2object(data):
     """https://stackoverflow.com/a/15882054"""
     return json.loads(data, object_hook=_json_object_hook)
+
+
+def serialize_nonstr_params(params: dict[str, Any]) -> dict[str, str]:
+    result = {}
+    for key, value in params.items():
+        if isinstance(value, str):
+            result[key] = value
+        else:
+            result[key] = json.dumps(value)
+
+    return result
