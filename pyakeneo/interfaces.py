@@ -3,7 +3,7 @@ import abc
 
 class GettableResourceInterface(abc.ABC):
     @abc.abstractmethod
-    def fetch_item(self, code_or_item):
+    def fetch_item(self, code_or_item, args=None):
         pass
 
 
