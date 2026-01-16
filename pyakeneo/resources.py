@@ -22,9 +22,7 @@ class ListableResource(interfaces.ListableResourceInterface):
         """Send a request with search, etc.
         Returns an iterable list (Collection)"""
         if args:
-            for key, value in args.items():
-                if not isinstance(value, str):
-                    args[key] = json.dumps(value)
+            args = serialize_nonstr_params(params=args)
 
         url = self._endpoint
         r = self._session.get(url, params=args)
