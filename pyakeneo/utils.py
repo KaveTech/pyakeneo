@@ -30,7 +30,7 @@ def json2object(data):
     return json.loads(data, object_hook=_json_object_hook)
 
 
-def serialize_nonstr_params(params: dict[str, Any]) -> dict[str, str]:
+def serialize_structured_params(params: dict[str, Any]) -> dict[str, str]:
     result = {}
     for key, value in params.items():
         if isinstance(value, str):

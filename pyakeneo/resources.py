@@ -6,7 +6,7 @@ from typing import Any
 from pyakeneo import interfaces
 from pyakeneo.result import Result
 from pyakeneo.utils import urljoin
-from pyakeneo.utils import serialize_nonstr_params
+from pyakeneo.utils import serialize_structured_params
 
 
 class CreatableResource(interfaces.CreatableResourceInterface):
@@ -22,7 +22,7 @@ class ListableResource(interfaces.ListableResourceInterface):
         """Send a request with search, etc.
         Returns an iterable list (Collection)"""
         if args:
-            args = serialize_nonstr_params(params=args)
+            args = serialize_structured_params(params=args)
 
         url = self._endpoint
         r = self._session.get(url, params=args)
@@ -55,7 +55,7 @@ class GettableResource(interfaces.GettableResourceInterface):
             code = self.get_code(code_or_item)
 
         if args:
-            args = serialize_nonstr_params(params=args)
+            args = serialize_structured_params(params=args)
 
         url = urljoin(self._endpoint, code)
         r = self._session.get(url, params=args)
