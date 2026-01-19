@@ -2,9 +2,11 @@ import json
 import math
 
 
+from typing import Any
 from pyakeneo import interfaces
 from pyakeneo.result import Result
 from pyakeneo.utils import urljoin
+from pyakeneo.utils import serialize_structured_params
 
 
 class CreatableResource(interfaces.CreatableResourceInterface):
@@ -20,9 +22,7 @@ class ListableResource(interfaces.ListableResourceInterface):
         """Send a request with search, etc.
         Returns an iterable list (Collection)"""
         if args:
-            for key, value in args.items():
-                if not isinstance(value, str):
-                    args[key] = json.dumps(value)
+            args = serialize_structured_params(params=args)
 
         url = self._endpoint
         r = self._session.get(url, params=args)
@@ -46,7 +46,7 @@ class SearchAfterListableResource(ListableResource):
 
 
 class GettableResource(interfaces.GettableResourceInterface):
-    def fetch_item(self, code_or_item):
+    def fetch_item(self, code_or_item, args: dict[str, Any] | None = None):
         """Returns a unique item object. code_or_item should be the code
         of the desired item, or an item with the proper code."""
         code = code_or_item
@@ -54,8 +54,11 @@ class GettableResource(interfaces.GettableResourceInterface):
             # if code_or_item is item, then fetch the code
             code = self.get_code(code_or_item)
 
+        if args:
+            args = serialize_structured_params(params=args)
+
         url = urljoin(self._endpoint, code)
-        r = self._session.get(url)
+        r = self._session.get(url, params=args)
         r.raise_for_status()
 
         return json.loads(r.text)  # returns item as a dict
